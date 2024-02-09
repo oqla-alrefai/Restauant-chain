@@ -1,0 +1,40 @@
+:root {
+    --sideBar_color: #171F39;
+    --icon_hover_color: #FA8C45;
+    --main_background_color: #F0F0F0;
+    --content_boxes_color: #FFFFFF;
+    --search_bar_color: #ECE9E7;
+    --text_color: #171F39;
+    --light_text_color: #808080;
+    --boundary_light_color: #bebebe;
+    --dark_text_color: #3e3e3e;
+    --pending_color: #7CC4DB;
+    --danger_color: #EC87B9;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Fira Sans', sans-serif;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 0.3em;
+    transition: width 0.3s ease;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    opacity: 0.3;
+    border-radius: 10px;
+    background-color: var(--sideBar_color);
+    transition: background-color 1s ease;
+  }
+  
+  body {
+    position: relative;
+  }

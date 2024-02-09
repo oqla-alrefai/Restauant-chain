@@ -1,0 +1,27 @@
+.button-component {
+    width: 140px;
+    height: 35px;
+    font-size: 0.95em;
+    word-spacing: 0.2em;
+    letter-spacing: 0.02em;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+    background-color: var(--text_color);
+    color: var(--content_boxes_color);
+    border: none;
+    padding: 0.6em;
+    border-radius: 6px;
+    transition: 0.5s;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    border: 2px solid var(--text_color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-component:hover {
+    background-color: var(--content_boxes_color) !important;
+    color: var(--sideBar_color);
+    border: 2px solid var(--sideBar_color);
+}

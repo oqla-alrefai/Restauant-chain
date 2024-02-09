@@ -1,0 +1,20 @@
+.loader {
+    width: 20px;
+    height: 20px;
+    border-top: 3px solid var(--content_boxes_color);
+    border-right: 3px solid var(--icon_hover_color);
+    border-bottom: 3px solid var(--content_boxes_color);
+    border-left: 3px solid var(--icon_hover_color);
+    border-radius: 50%;
+    animation: spin 1.4s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
