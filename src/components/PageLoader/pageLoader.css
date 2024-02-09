@@ -1,0 +1,56 @@
+.page-loader-section {
+    display: inline;
+    background: transparent;
+    border-radius: 20px;
+    position: absolute;
+}
+
+.page-loader-section .page_loader {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+.page-loader-section div {
+    border-radius: 25%;
+    position: absolute;
+    border: 3px solid var(--pending_color);
+    border-top: 3px solid var(--sideBar_color);
+    border-bottom: 3px solid var(--icon_hover_color);
+    top: calc(9px * var(--i));
+    left: calc(9px * var(--i));
+    width: calc(9px * var(--size));
+    height: calc(9px * var(--size));
+}
+
+.page_loader div:first-child {
+    animation: spin calc(1s * 0.15 * (10 - var(--i))) linear infinite;
+}
+
+.page_loader div:nth-child(2) {
+    animation: antiSpin calc(1s * 0.15 * (10 - var(--i))) linear infinite;
+}
+
+.page_loader div:nth-child(3) {
+    animation: spin calc(1s * 0.15 * (10 - var(--i))) linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes antiSpin {
+    0% {
+        transform: rotate(360deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
