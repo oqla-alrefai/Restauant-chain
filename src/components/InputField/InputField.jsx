@@ -3,26 +3,33 @@ import PropTypes from "prop-types";
 import React from "react";
 
 function InputField(props) {
-  const { type, name, placeholder, value, handler, isRequired} = props;
+  const { type, name, label: label, value, width, handler, isRequired } = props;
 
   return (
-    <input
-      className="input-field-component"
-      type={type}
-      name={name}
-      placeholder={placeholder}
-      value={value}
-      onChange={handler}
-      {...(isRequired ? { required: true } : {})}
-    />
+    <>
+      <label className="input-label" htmlFor={name}>
+        {label}
+        <input
+          className="input-field-component"
+          style={{width: width}}
+          type={type}
+          id={name}
+          name={name}
+          value={value}
+          onChange={handler}
+          {...(isRequired ? { required: true } : {})}
+        />
+      </label>
+    </>
   );
 }
 
 InputField.propTypes = {
   type: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
+  width: PropTypes.string,
   handler: PropTypes.func,
   isRequired: PropTypes.bool,
 };

@@ -1,13 +1,14 @@
 import "./App.css";
-import { useALert } from "./ContextAPI/AlertContext";
 import { Alert } from "./components";
+import MainLayout from "./layouts/Main/Main";
+import { Restaurants } from "./views";
 
 function App() {
-  const {type, message, active} = useALert().alertState;
-
   return (
     <>
-      <h1>InfoGraph Task</h1>
+      <MainLayout>
+        <Restaurants />
+      </MainLayout>
       <Alert />
     </>
   );

@@ -11,7 +11,7 @@ const useALert = () => {
 
 const AlertProvider = ({ children }) => {
   const [alertState, setAlertState] = useState({
-    active: true,
+    active: false,
     type: "fail",
     message: "Something went wrong!",
   });
