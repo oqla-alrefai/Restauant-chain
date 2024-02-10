@@ -1,0 +1,17 @@
+
+.side-bar-nav {
+    background-color: var(--sideBar_color);
+    width: 100%;
+    min-height: 4em;
+    height: fit-content;
+    padding-left: 1em;
+    display: inline;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.side-bar-nav h1 {
+    color: var(--icon_hover_color);
+    font-size: 2.5em;
+}
