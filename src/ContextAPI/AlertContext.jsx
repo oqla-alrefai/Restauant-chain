@@ -16,12 +16,12 @@ const AlertProvider = ({ children }) => {
     message: "Something went wrong!",
   });
 
-  const showALert = (type, message) =>
+  const showAlert = (type, message) =>
     setAlertState({ active: true, type: type, message: message });
   const closeAlert = () => setAlertState({ ...alertState, active: false });
 
   return (
-    <AlertContext.Provider value={{ alertState, showALert, closeAlert }}>
+    <AlertContext.Provider value={{ alertState, showAlert, closeAlert }}>
       {children}
     </AlertContext.Provider>
   );

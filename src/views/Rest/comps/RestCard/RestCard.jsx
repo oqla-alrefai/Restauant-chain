@@ -1,18 +1,14 @@
-import { Title } from "../../../../components";
 import "./restCard.css";
 
-function RestCard({ restaurant, handler }) {
-  const {
-    restaurantName,
-    phoneNumber,
-    streetName,
-    openingHours,
-    nearbyLandmarks,
-  } = restaurant;
+function RestCard({ restaurant, landmarks, handler }) {
+  const { restaurantName, phoneNumber, streetName, openingHours } = restaurant;
 
   return (
     <>
-      <div className="restaurant-card" onClick={() => handler(restaurantName)}>
+      <div
+        className="restaurant-card"
+        onClick={handler ? () => handler(restaurant) : null}
+      >
         <p>
           <i className="ri-home-office-fill"></i>
           <span>{restaurantName}</span>
@@ -31,12 +27,23 @@ function RestCard({ restaurant, handler }) {
             {openingHours.start} - {openingHours.end}
           </span>
         </p>
-        <p>
-          <i className="ri-map-2-line"></i>
-          {nearbyLandmarks.map((mark, idx) => (
-            <span key={idx}>{mark}, </span>
-          ))}
-        </p>
+        {landmarks ? (
+          landmarks.length ? (
+            <p>
+              <i className="ri-map-2-line"></i>
+              {landmarks.map((mark, idx) => (
+                <span key={idx}>{mark}, </span>
+              ))}
+            </p>
+          ) : (
+            <p>
+              <i className="ri-map-2-line"></i>
+              <span>No landmarks For This Restaurant</span>
+            </p>
+          )
+        ) : (
+          <></>
+        )}
       </div>
     </>
   );
