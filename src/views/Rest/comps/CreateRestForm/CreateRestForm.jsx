@@ -4,17 +4,15 @@ import axios from "axios";
 import useFormData from "../../../../customHooks/useFormData";
 import { Select } from "antd";
 import { landmarks } from "./landMarks.js";
-
 import "./createRestForm.css";
 
 function createRestForm({ setShowAddRestaurantModal }) {
   const { formData, handleChange } = useFormData({
     restaurantName: "",
-    restaurantId: null,
     phoneNumber: "",
-    openingHours: "",
+    startTime: "",
+    closeTime: "",
     streetName: "",
-    nearbyLandmarks: "",
   });
 
   const [isLoading, setIsLoading] = useState(false);
@@ -40,7 +38,13 @@ function createRestForm({ setShowAddRestaurantModal }) {
   //   }, []);
 
   const handleSubmit = (event) => {
-    // event.preventDefault();
+    event.preventDefault();
+    console.log(formData, landmarksList);
+
+    requestBody = {
+      ...formData,
+      landmarks: setLandmarksList,
+    }
     // formData.projectManagerId = managerId;
     // if (isLoading) return;
     // try {
@@ -79,10 +83,6 @@ function createRestForm({ setShowAddRestaurantModal }) {
           <Title text="Add New Restaurant" />
         </div>
 
-        {/* {!managers.length ? (
-          <PageLoader scale="0.9" top="30%" left="46%" />
-        ) : (
-        )} */}
         <form className="create-restaurant-form" onSubmit={handleSubmit}>
           <InputField
             type="text"
@@ -104,9 +104,9 @@ function createRestForm({ setShowAddRestaurantModal }) {
           <div style={{ display: "flex" }}>
             <InputField
               type="time"
-              name="startDate"
+              name="startTime"
               label="Opening Hours from:"
-              value={formData.startDate}
+              value={formData.startTime}
               handler={handleChange}
               isRequired={true}
               width="170px"
@@ -114,9 +114,9 @@ function createRestForm({ setShowAddRestaurantModal }) {
 
             <InputField
               type="time"
-              name="endDate"
+              name="closeTime"
               label="to:"
-              value={formData.endDate}
+              value={formData.closeTime}
               handler={handleChange}
               isRequired={true}
               width="170px"

@@ -34,7 +34,7 @@ function Rest() {
             setIsLoading(false);
           });
       };
-      
+
       !restaurants.length ? fetchData() : null;
     } catch (error) {
       console.error("Error fetching projects:", error.message);
@@ -68,7 +68,7 @@ function Rest() {
         {view == "Restaurants" ? (
           <div className="restaurant-list">
             {isLoading ? (
-              <PageLoader />
+              <PageLoader top='400px' />
             ) : !restaurants.length ? (
               <Title text="You Have No Restaurants Yet" />
             ) : (

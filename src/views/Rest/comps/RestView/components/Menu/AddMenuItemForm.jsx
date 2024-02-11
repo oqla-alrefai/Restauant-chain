@@ -45,6 +45,7 @@ function AddMenuItemForm({ setShowAddMenuItemModal }) {
               name="menuItem"
               className="input-field-component"
               value={formData.menuItem}
+              onChange={handleChange}
             >
               <option value="">Select...</option>
               {menuItems.map((menuItem) => (
@@ -62,6 +63,7 @@ function AddMenuItemForm({ setShowAddMenuItemModal }) {
               name="servingTime"
               className="input-field-component"
               value={formData.servingTime}
+              onChange={handleChange}
             >
               <option value="">Select...</option>
               <option value="breakfast">Breakfast</option>
