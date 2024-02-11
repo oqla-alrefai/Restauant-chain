@@ -1,4 +1,3 @@
-import { Title } from "../../../../components";
 import "./restCard.css";
 
 function RestCard({ restaurant, handler }) {
@@ -12,7 +11,10 @@ function RestCard({ restaurant, handler }) {
 
   return (
     <>
-      <div className="restaurant-card" onClick={() => handler(restaurantName)}>
+      <div
+        className="restaurant-card"
+        onClick={handler ? () => handler(restaurant) : null}
+      >
         <p>
           <i className="ri-home-office-fill"></i>
           <span>{restaurantName}</span>

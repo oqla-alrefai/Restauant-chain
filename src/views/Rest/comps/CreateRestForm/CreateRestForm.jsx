@@ -75,7 +75,6 @@ function createRestForm({ setShowAddRestaurantModal }) {
 
   return (
     <>
-      <>
         <div className="form-header">
           <Title text="Add New Restaurant" />
         </div>
@@ -140,7 +139,6 @@ function createRestForm({ setShowAddRestaurantModal }) {
               placeholder="Team Members"
               mode="multiple"
               className="select-search-field overflowed-select"
-              bordered={false}
               size="large"
               allowClear
               onChange={handleLandmarkSelection}
@@ -160,7 +158,6 @@ function createRestForm({ setShowAddRestaurantModal }) {
             backgroundColor="#171F39"
           />
         </form>
-      </>
     </>
   );
 }

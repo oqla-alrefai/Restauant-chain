@@ -16,7 +16,7 @@ function Rest() {
   );
 
   const handleRestaurantChoice = (restaurant) => {
-    updateBreadcrumb(`/ ${restaurant}`);
+    updateBreadcrumb(`/ ${restaurant.restaurantName}`);
     setViewedRestaurant(restaurant);
   };
 
@@ -45,6 +45,8 @@ function Rest() {
               />
             ))}
           </div>
+        ) : viewedRestaurant ? (
+          <RestaurantView restaurant={viewedRestaurant} />
         ) : (
           <></>
         )}
