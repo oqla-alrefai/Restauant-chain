@@ -1,7 +1,6 @@
 .input-label {
     color: var(--text_color);
     font-weight: 500;
-    /* border: 1px solid red; */
     display: flex;
     justify-content: start;
     align-items: center;

@@ -11,7 +11,7 @@
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
 }
 
-.data-model span {
+.data-model .modal-close-button {
     position: absolute;
     top: 1.3em;
     right: 1.5em;
@@ -21,7 +21,7 @@
     transition: 0.4s;
 }
 
-.data-model span:hover {
+.data-model .modal-close-button:hover {
     color: var(--icon_hover_color);
 }
 

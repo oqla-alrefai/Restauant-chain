@@ -5,7 +5,7 @@ function DataModel({ handler, children }) {
     <>
       <div className="data-model">
         {children}
-        <span onClick={() => handler(false)}>
+        <span className="modal-close-button" onClick={() => handler(false)}>
           <i className="ri-close-line" />
         </span>
       </div>
