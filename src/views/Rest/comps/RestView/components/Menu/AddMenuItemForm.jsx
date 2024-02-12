@@ -1,34 +1,58 @@
-import { useEffect, useState } from "react";
-import {
-  Button,
-  PageLoader,
-  Title,
-} from "../../../../../../components";
+import { useState } from "react";
+import { Button, Title } from "../../../../../../components";
 import axios from "axios";
 import useFormData from "../../../../../../customHooks/useFormData";
 import { menuItems } from "./menuItems.js";
 import { useALert } from "../../../../../../ContextAPI/AlertContext.jsx";
+import Loader from "../../../../../../components/ButtonLoader/Loader.jsx";
 
-function AddMenuItemForm({ setShowAddMenuItemModal }) {
+function AddMenuItemForm({ setShowAddMenuItemModal, restaurantId, fetchData }) {
   const { formData, handleChange } = useFormData({
     menuItem: "",
     servingTime: "",
   });
   let [menuItemsList, setMenuItemsList] = useState([]);
-  const {showAlert} = useALert();
-  
+  const [isLoading, setIsLoading] = useState(false);
+  const { showAlert } = useALert();
+
   const handleItemAddition = (event) => {
     event.preventDefault();
-    console.log(formData);
     if (formData.menuItem == "" || formData.servingTime == "") {
       showAlert("tip", "please fill both fields!");
       return;
     }
-    let newList = menuItemsList.push(formData);
+    let newList = [...menuItemsList, formData];
     setMenuItemsList(newList);
-    console.log(landmarksList);
   };
-  const handleSubmit = () => {};
+
+  const handleDeletion = (itemId) => {
+    console.log(itemId);
+    let newList = [...menuItemsList];
+    newList.splice(itemId, 1);
+    setMenuItemsList(newList);
+  };
+
+  const handleSubmit = () => {
+    if (isLoading) return;
+    try {
+      setIsLoading(true);
+      axios
+        .post(`http://localhost:3001/addmenu/${restaurantId}`, menuItemsList)
+        .then((response) => {
+          showAlert("success", `Items were created successfully`);
+          setShowAddMenuItemModal(false);
+          fetchData();
+        })
+        .catch((e) => {
+          showAlert("fail", `Something Went Wrong`);
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    } catch (error) {
+      showAlert("fail", `Something Went Wrong`);
+    }
+  };
 
   return (
     <>
@@ -39,7 +63,7 @@ function AddMenuItemForm({ setShowAddMenuItemModal }) {
       <div className="form-organizer">
         <form className="add-menu-item-form">
           <label htmlFor="menuItem">
-            Select a Menu Item:
+            Select a Menu Item: 
             <select
               id="menuItem"
               name="menuItem"
@@ -49,7 +73,7 @@ function AddMenuItemForm({ setShowAddMenuItemModal }) {
             >
               <option value="">Select...</option>
               {menuItems.map((menuItem) => (
-                <option key={menuItem.id} value={menuItem.id}>
+                <option key={menuItem.id} value={menuItem.menuItem}>
                   {menuItem.menuItem}
                 </option>
               ))}
@@ -74,18 +98,24 @@ function AddMenuItemForm({ setShowAddMenuItemModal }) {
           <Button text="Add Item" handler={handleItemAddition} />
         </form>
 
-        <div className="menu-list-display-container">
-          {!menuItemsList.length ? (
-            menuItemsList.map((item, idx) => (
-              <span>
-                {item.menuItem}, {item.servingTime}
+        {menuItemsList.length ? (
+          <div className="menu-list-display-container">
+            {menuItemsList.map((item, idx) => (
+              <span key={idx}>
+                {item.menuItem} - {item.servingTime}
+                <i
+                  className="ri-close-line"
+                  onClick={() => handleDeletion(idx)}
+                />
               </span>
-            ))
-          ) : (
-            <></>
-          )}
-          <button>Send List</button>
-        </div>
+            ))}
+            <button onClick={handleSubmit}>
+              {isLoading ? <Loader /> : "Send List"}
+            </button>
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
     </>
   );

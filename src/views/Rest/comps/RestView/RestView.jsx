@@ -16,7 +16,7 @@ function RestView({ restaurant }) {
         setIsLoading(true);
         axios
           .get(
-            `http://localhost:3001/getlandmarks?restaurantId=${restaurant.id}`
+            `http://localhost:3001/getlandmarks/${restaurant.id}`
           )
           .then((response) => {
             setLandmarks(response.data);
