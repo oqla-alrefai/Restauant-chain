@@ -34,12 +34,13 @@
 
 .maintenance-info {
     width: 100%;
-    min-height: 2em;
     background-color: var(--main_background_color);
     border-radius: 7px;
     padding: 5px 16px;
     transition: 0.4s;
+    min-height: 2em;
     height: 45px;
+    max-height: fit-content;
 }
 
 .action-header {
@@ -58,6 +59,7 @@
 }
 
 .action-details {
+    position: relative;
     opacity: 0;
     z-index: -1;
     transform: translateY(-10px);
@@ -68,7 +70,6 @@
     flex-direction: column;
     gap: 0.2em;
     transition: 0.4s;
-    border: 1px solid red;
 }
 
 .action-details span,

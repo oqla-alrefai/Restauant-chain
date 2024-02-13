@@ -13,9 +13,10 @@ function Maintenance({ restaurantId }) {
   const { showAlert } = useALert();
 
   const fetchData = () => {
+    const server_ = "https://restaurantchain-server.onrender.com";
     setIsLoading(true);
     axios
-      .get(`http://localhost:3001/getmaintenanceinfo/${restaurantId}`)
+      .get(`${server_}/getmaintenanceinfo/${restaurantId}`)
       .then((response) => {
         setMaintenanceInfo(response.data);
       })

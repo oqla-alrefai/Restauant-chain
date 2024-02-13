@@ -11,8 +11,9 @@ function Menu({ restaurantId }) {
 
   const fetchData = () => {
     setIsLoading(true);
+    const server_ = "https://restaurantchain-server.onrender.com";
     axios
-      .get(`http://localhost:3001/getrestaurantmenu/${restaurantId}`)
+      .get(`${server_}/getrestaurantmenu/${restaurantId}`)
       .then((response) => {
         setMenuItems(response.data);
       })

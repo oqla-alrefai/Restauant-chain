@@ -20,21 +20,6 @@ function Rest() {
   useEffect(() => {
     const source = axios.CancelToken.source();
     try {
-      const fetchData = () => {
-        setIsLoading(true);
-        axios
-          .get("http://localhost:3001/getallrestaurants")
-          .then((response) => {
-            setRestaurants(response.data);
-          })
-          .catch((err) => {
-            console.log(err.message); /// error handler
-          })
-          .finally(() => {
-            setIsLoading(false);
-          });
-      };
-
       !restaurants.length ? fetchData() : null;
     } catch (error) {
       console.error("Error fetching projects:", error.message);
@@ -44,6 +29,22 @@ function Rest() {
       source.cancel("request is canceled");
     };
   }, []);
+
+  const fetchData = () => {
+    const server_ = "https://restaurantchain-server.onrender.com";
+    setIsLoading(true);
+    axios
+      .get(`${server_}/getallrestaurants`)
+      .then((response) => {
+        setRestaurants(response.data);
+      })
+      .catch((err) => {
+        console.log(err.message); /// error handler
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
 
   const handleRestaurantChoice = (restaurant) => {
     updateBreadcrumb(`/ ${restaurant.restaurantName}`);
@@ -68,7 +69,7 @@ function Rest() {
         {view == "Restaurants" ? (
           <div className="restaurant-list">
             {isLoading ? (
-              <PageLoader top='400px' />
+              <PageLoader top="400px" />
             ) : !restaurants.length ? (
               <Title text="You Have No Restaurants Yet" />
             ) : (
@@ -91,6 +92,7 @@ function Rest() {
           <DataModel handler={setShowAddRestaurantModal}>
             <CreateRestaurant
               setShowAddRestaurantModal={setShowAddRestaurantModal}
+              fetchData={fetchData}
             />
           </DataModel>
         ) : (

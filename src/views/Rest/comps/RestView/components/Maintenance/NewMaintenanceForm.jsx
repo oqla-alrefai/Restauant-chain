@@ -24,9 +24,10 @@ function NewMaintenanceForm({
     if (isLoading) return;
     try {
       setIsLoading(true);
+      const server_ = "https://restaurantchain-server.onrender.com";
       axios
         .post(
-          `http://localhost:3001/addmaintenanceinfo/${restaurantId}`,
+          `${server_}/addmaintenanceinfo/${restaurantId}`,
           formData
         )
         .then((response) => {

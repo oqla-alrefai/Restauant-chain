@@ -36,8 +36,9 @@ function AddMenuItemForm({ setShowAddMenuItemModal, restaurantId, fetchData }) {
     if (isLoading) return;
     try {
       setIsLoading(true);
+    const server_ = "https://restaurantchain-server.onrender.com";
       axios
-        .post(`http://localhost:3001/addmenu/${restaurantId}`, menuItemsList)
+        .post(`${server_}/addmenu/${restaurantId}`, menuItemsList)
         .then((response) => {
           showAlert("success", `Items were created successfully`);
           setShowAddMenuItemModal(false);
