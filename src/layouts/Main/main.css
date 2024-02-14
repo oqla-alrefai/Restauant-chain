@@ -17,3 +17,9 @@
     background-color: var(--main_background_color);
     padding: 2em;
 }
+
+@media (max-width: 615px) {
+    .main-content {
+        padding: 0;
+    }
+}

@@ -37,7 +37,7 @@ function InputField(props) {
 InputField.propTypes = {
   type: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   value: PropTypes.string.isRequired,
   width: PropTypes.string,
   max_length: PropTypes.string,
