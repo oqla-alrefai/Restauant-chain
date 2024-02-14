@@ -28,7 +28,7 @@
 
 .restaurant-card p:first-child span{
     color: var(--dark_text_color);
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-weight: 500;
 }
 .restaurant-card p:first-child i {

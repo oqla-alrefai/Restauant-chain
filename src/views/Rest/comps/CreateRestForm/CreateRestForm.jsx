@@ -22,6 +22,7 @@ function createRestForm({ setShowAddRestaurantModal, fetchData }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (!validateForm()) return;
     try {
       const requestBody = {
         ...formData,
@@ -56,6 +57,42 @@ function createRestForm({ setShowAddRestaurantModal, fetchData }) {
     console.log(landmarksList);
   };
 
+  function validateForm() {
+    // Phone Number validator
+    const validatePhoneNumber = () => {
+      const numberPattern = /^\+?[0-9\s]{1,14}$/;
+
+      return numberPattern.test(formData.phoneNumber);
+    };
+
+    // Time validator
+    const validateTime = () => {
+      const [startHour, startMinute] = formData.startTime
+        .split(":")
+        .map(Number);
+      const [endHour, endMinute] = formData.closeTime.split(":").map(Number);
+
+      const startTimeInMinutes = startHour * 60 + startMinute;
+      const endTimeInMinutes = endHour * 60 + endMinute;
+
+      return endTimeInMinutes >= startTimeInMinutes;
+    };
+
+    if (!validatePhoneNumber()) {
+      showAlert("danger", `Please inter a valid phone number!`);
+      return false;
+    }
+    if (!validateTime()) {
+      showAlert(
+        "danger",
+        `close Time can't be before or equal to the opening Time`
+      );
+      return false;
+    }
+
+    return true;
+  }
+
   return (
     <>
       <div className="form-header">
@@ -70,10 +107,11 @@ function createRestForm({ setShowAddRestaurantModal, fetchData }) {
           value={formData.restaurantName}
           handler={handleChange}
           isRequired={true}
+          max_length="30"
         />
 
         <InputField
-          type="text"
+          type="tel"
           name="phoneNumber"
           label="Phone Number "
           value={formData.phoneNumber}
@@ -109,6 +147,7 @@ function createRestForm({ setShowAddRestaurantModal, fetchData }) {
           value={formData.streetName}
           handler={handleChange}
           isRequired={false}
+          max_length='50'
         />
 
         <div style={{ display: "flex", minHeight: "fit-content" }}>

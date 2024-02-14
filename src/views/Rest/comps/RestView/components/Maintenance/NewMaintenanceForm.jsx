@@ -22,6 +22,8 @@ function NewMaintenanceForm({
   const handleSubmit = (event) => {
     event.preventDefault();
     if (isLoading) return;
+    if(!validateForm()) return;
+
     try {
       setIsLoading(true);
       const server_ = "https://restaurantchain-server.onrender.com";
@@ -45,6 +47,34 @@ function NewMaintenanceForm({
       showAlert("fail", `Something Went Wrong`);
     }
   };
+
+  function validateForm() {
+    // validate price
+    const validatePrice = () => {
+      const price = formData.maintenancePrice;
+      return price < 0;
+    }
+
+    // validate date
+    const validateDateRange = () => {
+      const startDateObj = new Date(formData.startDate);
+      const endDateObj = new Date(formData.endDate);
+
+      return endDateObj < startDateObj;
+    };
+
+    if(validatePrice()) {
+      showAlert("danger", "Maintenance price can not be lower than zero");
+      return false;
+    }
+
+    if(validateDateRange()) {
+      showAlert("danger", "End date can't be before start date");
+      return false;
+    }
+
+    return true;
+  }
 
   return (
     <>
@@ -107,6 +137,7 @@ function NewMaintenanceForm({
           placeholder="Additional Comments"
           value={formData.comments}
           onChange={handleChange}
+          maxLength='400'
         />
 
         <Button type="submit" text="Add Info" isLoading={isLoading} />
