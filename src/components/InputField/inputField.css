@@ -16,7 +16,7 @@
     transition: 1s;
     border-radius: 7px;
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
-    margin: 1em;
+    margin: 0.5em 1em;
     height: 2em;
     width: 100%;
 }

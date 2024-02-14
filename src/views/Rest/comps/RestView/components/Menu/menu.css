@@ -68,28 +68,26 @@
     display: flex;
     justify-content: start;
     align-items: start;
-    gap: 2em;
+    padding: 1em;
 }
 
 .add-menu-item-form {
-    width: 50%;
+    width: 40%;
     height: 100%;
-    padding: 1em;
     display: grid;
     grid-template-columns: 80%;
     grid-template-rows: repeat(3, 4em);
     gap: 1.2em;
 }
-
+ 
 .menu-list-display-container {
-    width: 50%;
+    width: 60%;
     height: 260px;
     position: relative;
     overflow-wrap: break-word;
-    background-color: var(--main_background_color);
     border-radius: 15px;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
-    padding: 1em;
+    padding: 0.5em;
 }
 
 .menu-list-display-container span {
