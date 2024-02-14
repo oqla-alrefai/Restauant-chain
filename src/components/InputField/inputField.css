@@ -5,6 +5,7 @@
     justify-content: start;
     align-items: center;
     text-wrap: nowrap;
+    border: 1px solid blue;
 }
 
 .input-field-component {
@@ -15,9 +16,7 @@
     padding-left: 0.4em;
     transition: 1s;
     border-radius: 7px;
-    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
-    margin: 0.5em 1em;
-    height: 2em;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     width: 100%;
 }
 

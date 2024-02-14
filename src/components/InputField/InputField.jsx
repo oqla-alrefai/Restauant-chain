@@ -6,7 +6,7 @@ function InputField(props) {
   const {
     type,
     name,
-    label: label,
+    placeholder,
     value,
     width,
     max_length,
@@ -16,20 +16,18 @@ function InputField(props) {
 
   return (
     <>
-      <label className="input-label" htmlFor={name}>
-        {label}
         <input
           className="input-field-component"
           style={{ width: width }}
           type={type}
           id={name}
           name={name}
+          placeholder={placeholder}
           value={value}
           onChange={handler}
           {...(isRequired ? { required: true } : {})}
           maxLength={max_length ? max_length : null}
         />
-      </label>
     </>
   );
 }
@@ -37,7 +35,7 @@ function InputField(props) {
 InputField.propTypes = {
   type: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  label: PropTypes.string,
+  placeholder: PropTypes.string,
   value: PropTypes.string.isRequired,
   width: PropTypes.string,
   max_length: PropTypes.string,

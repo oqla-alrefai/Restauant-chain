@@ -89,16 +89,16 @@
     transform: rotate(180deg);
 }
 
-/*  */
+/* add maintenance action form styles */
 
 .new-maintenance-info-form {
-    width: 80%;
+    width: 100%;
     height: 100%;
+    padding: 1em;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(5, 2.8em);
     gap: 1.2em;
-    padding: 1em;
 }
 
 .new-maintenance-info-form textarea {
@@ -123,4 +123,14 @@
 
 .new-maintenance-info-form textarea:focus::placeholder {
     color: var(--light_text_color);
+}
+
+@media (max-width: 870px) {
+    .new-maintenance-info-form {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(7, 2.8em);
+    }
+.new-maintenance-info-form textarea {
+    grid-column: auto;
+}
 }

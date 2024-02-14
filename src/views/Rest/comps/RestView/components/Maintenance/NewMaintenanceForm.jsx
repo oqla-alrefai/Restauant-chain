@@ -83,52 +83,45 @@ function NewMaintenanceForm({
       </div>
 
       <form onSubmit={handleSubmit} className="new-maintenance-info-form">
-        <label htmlFor="impact" className="input-label">
-          Select impact:
           <select
             id="impact"
             name="impact"
             className="input-field-component"
             value={formData.impact}
             onChange={handleChange}
-            style={{ width: "250px" }}
             required
           >
-            <option value="">Select...</option>
+            <option value="">Select An Impact...</option>
             <option value="normal operations">Normal Operations</option>
             <option value="partial shutdown">Partial Shutdown</option>
             <option value="complete shutdown">Complete Shutdown</option>
           </select>
-        </label>
 
         <InputField
           type="number"
           name="maintenancePrice"
-          label="Price"
+          placeholder="Price"
           value={formData.maintenancePrice}
           handler={handleChange}
           isRequired={true}
-          width="250px"
         />
 
         <InputField
           type="date"
           name="startDate"
-          label="Start Date"
+          placeholder="Start Date"
           value={formData.startDate}
           handler={handleChange}
           isRequired={true}
-          width="250px"
         />
 
         <InputField
           type="date"
           name="endDate"
-          label="End Date"
+          placeholder="End Date"
           value={formData.endDate}
           handler={handleChange}
           isRequired={true}
-          width="250px"
         />
 
         <textarea
