@@ -100,74 +100,97 @@ function createRestForm({ setShowAddRestaurantModal, fetchData }) {
       </div>
 
       <form className="create-restaurant-form" onSubmit={handleSubmit}>
-        <InputField
-          type="text"
-          name="restaurantName"
-          label="Restaurant Name "
-          value={formData.restaurantName}
-          handler={handleChange}
-          isRequired={true}
-          max_length="30"
-        />
+        <div className="restaurant-form-organizer">
+          <div className="labels-container">
+            <label htmlFor="restaurantName" className="input-label">
+              Restaurant Name
+            </label>
+            <label htmlFor="phoneNumber" className="input-label">
+              Phone Number
+            </label>
+            <label htmlFor="startTime" className="input-label">
+              Opening Hours
+            </label>
+            <label htmlFor="streetName" className="input-label">
+              Street Name
+            </label>
+            <label htmlFor="landmarks" className="input-label">
+              Nearby Landmarks
+            </label>
+          </div>
+          <div className="input-fields-container">
+            <InputField
+              type="text"
+              name="restaurantName"
+              value={formData.restaurantName}
+              handler={handleChange}
+              isRequired={true}
+              max_length="30"
+            />
 
-        <InputField
-          type="tel"
-          name="phoneNumber"
-          label="Phone Number "
-          value={formData.phoneNumber}
-          handler={handleChange}
-          isRequired={true}
-        />
-        <div style={{ display: "flex" }}>
-          <InputField
-            type="time"
-            name="startTime"
-            label="Opening Hours from:"
-            value={formData.startTime}
-            handler={handleChange}
-            isRequired={true}
-            width="170px"
-          />
+            <InputField
+              type="tel"
+              name="phoneNumber"
+              value={formData.phoneNumber}
+              handler={handleChange}
+              isRequired={true}
+            />
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <InputField
+                type="time"
+                name="startTime"
+                value={formData.startTime}
+                handler={handleChange}
+                isRequired={true}
+                width="170px"
+              />
 
-          <InputField
-            type="time"
-            name="closeTime"
-            label="to:"
-            value={formData.closeTime}
-            handler={handleChange}
-            isRequired={true}
-            width="170px"
-          />
+              <InputField
+                type="time"
+                name="closeTime"
+                label="to:"
+                value={formData.closeTime}
+                handler={handleChange}
+                isRequired={true}
+                width="170px"
+              />
+            </div>
+
+            <InputField
+              type="text"
+              name="streetName"
+              value={formData.streetName}
+              handler={handleChange}
+              isRequired
+              max_length="50"
+            />
+
+            <Select
+              mode="multiple"
+              className="select-search-field overflowed-select"
+              size="small"
+              allowClear
+              onChange={handleLandmarkSelection}
+              style={{
+                width: "400px",
+                height: "2.7em",
+                margin: '0.5em 1em'
+              }}
+            >
+              {landmarks.map(({ name, id }) => (
+                <Select.Option value={name} key={id}>
+                  <span>{name}</span>
+                </Select.Option>
+              ))}
+            </Select>
+          </div>
         </div>
-
-        <InputField
-          type="text"
-          name="streetName"
-          label="Street Name"
-          value={formData.streetName}
-          handler={handleChange}
-          isRequired={false}
-          max_length='50'
-        />
-
-        <div style={{ display: "flex", minHeight: "fit-content" }}>
-          <label htmlFor="landmarks" className="input-label" />
-          Nearby Landmarks
-          <Select
-            mode="multiple"
-            className="select-search-field overflowed-select"
-            size="small"
-            allowClear
-            onChange={handleLandmarkSelection}
-          >
-            {landmarks.map(({ name, id }) => (
-              <Select.Option value={name} key={id}>
-                <span>{name}</span>
-              </Select.Option>
-            ))}
-          </Select>
-        </div>
-
         <Button
           type="submit"
           text="Create Restaurant"
