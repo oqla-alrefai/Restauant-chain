@@ -14,7 +14,6 @@
 }
 
 .restaurants-header .add-restaurant-button {
-    display: inline-block;
     height: 100%;
     font-size: 3.5em;
     display: flex;
@@ -36,4 +35,20 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.3em;
+}
+
+@media (max-width: 1063px) {
+    .restaurant-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 615px) {
+    .restaurant-list {
+        grid-template-columns: 1fr;
+    }
+
+    .restaurants-header .add-restaurant-button {
+        font-size: 2.5em;
+    }
 }

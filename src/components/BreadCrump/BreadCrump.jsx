@@ -1,40 +1,24 @@
 import Title from "../Title/Title";
 import PropTypes from "prop-types";
+import "./breadCrump.css";
 
 function BreadCrump(props) {
   const { trail, back } = props;
 
   const styles = {
-    breadcrumb: {
-      listStyle: "none",
-      display: "flex",
-      justifyContent: "start",
-      alignItems: "center",
-      width: "fit-content",
-    },
     backButton: {
-      fontSize: "2.2em",
-      color: "var(--light_text_color)",
-      transition: "0.5s",
-      cursor: "pointer",
-      marginRight: "0.3em",
       ...(trail.length > 1 && { color: "var(--sideBar_color)" }),
-    },
-    breadcrumbItem: {
-      color: "var(--light_text_color)",
-      display: "inline",
-      cursor: "pointer",
     },
   };
 
   return (
     <>
-      <ul style={styles.breadcrumb}>
-        <span style={styles.backButton}>
+      <ul className="breadcrumb">
+        <span style={styles.backButton} className="back-button">
           <i onClick={back} className="ri-arrow-left-circle-line"></i>
         </span>
         {trail.map((item, index) => (
-          <li style={styles.breadcrumbItem} key={index}>
+          <li className="breadcrumb-item" key={index}>
             <Title text={item} />
           </li>
         ))}

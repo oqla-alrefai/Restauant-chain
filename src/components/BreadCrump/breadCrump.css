@@ -1,0 +1,27 @@
+.breadcrumb {
+    list-style: none;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: fit-content;
+}
+
+.breadcrumb .back-button {
+    font-size: 2.2em;
+    color: var(--light_text_color);
+    transition: 0.5s;
+    cursor: pointer;
+    margin-right: 0.3em;
+}
+
+.breadcrumb-item {
+    color: var(--light_text_color);
+    display: inline;
+    cursor: pointer;
+}
+
+@media (max-width: 615px) {
+    .breadcrumb .back-button {
+        font-size: 1.7em;
+    }
+}
