@@ -36,7 +36,7 @@ function AddMenuItemForm({ setShowAddMenuItemModal, restaurantId, fetchData }) {
     if (isLoading) return;
     try {
       setIsLoading(true);
-    const server_ = "https://restaurantchain-server.onrender.com";
+      const server_ = "https://restaurantchain-server.onrender.com";
       axios
         .post(`${server_}/addmenu/${restaurantId}`, menuItemsList)
         .then((response) => {
@@ -63,12 +63,12 @@ function AddMenuItemForm({ setShowAddMenuItemModal, restaurantId, fetchData }) {
 
       <div className="form-organizer">
         <form className="add-menu-item-form">
-          <label htmlFor="menuItem">
-            Select a Menu Item: 
+          <label htmlFor="menuItem" className="menu-input-label">
+            Select a Menu Item:
             <select
               id="menuItem"
               name="menuItem"
-              className="input-field-component"
+              className="input-field-component menu-select-fields"
               value={formData.menuItem}
               onChange={handleChange}
             >
@@ -81,12 +81,12 @@ function AddMenuItemForm({ setShowAddMenuItemModal, restaurantId, fetchData }) {
             </select>
           </label>
 
-          <label htmlFor="servingTime">
+          <label htmlFor="servingTime" className="menu-input-label">
             Select a Serving Time:
             <select
               id="servingTime"
               name="servingTime"
-              className="input-field-component"
+              className="input-field-component menu-select-fields"
               value={formData.servingTime}
               onChange={handleChange}
             >

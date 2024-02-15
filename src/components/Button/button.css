@@ -1,6 +1,8 @@
 .button-component {
     width: 140px;
+    min-width: fit-content;
     height: 35px;
+    min-height: fit-content;
     font-size: 0.95em;
     word-spacing: 0.2em;
     letter-spacing: 0.02em;
