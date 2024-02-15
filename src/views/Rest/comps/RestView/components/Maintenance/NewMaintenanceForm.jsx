@@ -109,7 +109,7 @@ function NewMaintenanceForm({
         <InputField
           type="date"
           name="startDate"
-          placeholder="Start Date"
+          placeholder={formData.startDate == "" ? "Start Date" : ""}
           value={formData.startDate}
           handler={handleChange}
           isRequired={true}
@@ -118,7 +118,7 @@ function NewMaintenanceForm({
         <InputField
           type="date"
           name="endDate"
-          placeholder="End Date"
+          placeholder={formData.endDate == "" ? "End Date" : ""}
           value={formData.endDate}
           handler={handleChange}
           isRequired={true}
