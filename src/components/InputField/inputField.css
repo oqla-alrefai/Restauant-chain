@@ -1,13 +1,3 @@
-.input-label {
-    color: var(--text_color);
-    font-weight: 500;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    text-wrap: nowrap;
-    border: 1px solid blue;
-}
-
 .input-field-component {
     font-size: 1.1em;
     background-color: var(--content_boxes_color);

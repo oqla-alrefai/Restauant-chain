@@ -80,11 +80,21 @@
 
 .add-menu-item-form {
     width: 40%;
-    height: 100%;
     display: grid;
     grid-template-columns: 80%;
     grid-template-rows: repeat(3, 4em);
     gap: 1.2em;
+}
+
+.menu-input-label {
+    color: var(--text_color);
+    font-weight: 500;
+    height: 100%;
+}
+
+.menu-select-fields {
+    height: 1.5em;
+    margin: 0.5em;
 }
 
 .menu-list-display-container {
@@ -99,12 +109,13 @@
 }
 
 .menu-list-display-container span {
-    color: var(--text_color);
-    font-size: 0.8em;
+    display: inline-block;
+    font-size: 0.9em;
     background-color: #c2c2fd;
     padding: 0.3em;
+    margin: 0.1em;
+    color: var(--text_color);
     text-wrap: nowrap;
-    margin: 0.4em;
     border-radius: 15px;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
 }
@@ -165,7 +176,7 @@
 
 @media (max-width: 615px) {
     .menu-list-display-container span {
-        font-size: 0.5em;
+        font-size: 0.7em;
     }
 
     .menu-list-display-container button {
@@ -176,6 +187,10 @@
 }
 
 @media (max-width: 480px) {
+    .menu-list-display-container span {
+        font-size: 0.9em;
+    }
+
     .add-menu-item-form {
         height: 35%;
     }
