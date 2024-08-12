@@ -1,15 +1,15 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 const useFormData = (initialState) => {
   const [formData, setFormData] = useState(initialState);
 
-  const handleChange = (e) => {
+  const handleChange = useCallback((e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
+    setFormData((prevFormData) => ({
+      ...prevFormData,
       [name]: value,
     }));
-  };
+  }, []);
 
   return {
     formData,

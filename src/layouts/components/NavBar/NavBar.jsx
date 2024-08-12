@@ -3,7 +3,7 @@ import "./navBar.css";
 function NavBar() {
   return (
     <nav className="side-bar-nav">
-      <h1>InfoGraph</h1>
+      <h1>Restaurant Chain Manager</h1>
     </nav>
   );
 }
